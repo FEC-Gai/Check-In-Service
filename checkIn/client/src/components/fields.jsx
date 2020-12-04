@@ -55,7 +55,7 @@ class Fields extends React.Component {
 
       if (areBothDatesPopulated && isTargetDateAfterCheckOut) {
         this.setState({
-          nights: 'Select date',
+          nights: 'Select dates',
           checkIn: targetDate,
           checkOut: 'Add date',
         });
@@ -116,9 +116,12 @@ class Fields extends React.Component {
   alterGuestCount(target, event) {
     const { target: eventTarget } = event;
     const action = eventTarget.getAttribute('data-action');
+    const { adults, children, infants } = this.state;
     if (action === 'increment') {
       this.setState((prevState) => ({ [target]: prevState[target] + 1 }));
-    } else if (action === 'decrement') {
+    } else if (action === 'decrement' && target === 'adults' && adults > 1) {
+      this.setState((prevState) => ({ [target]: prevState[target] - 1 }));
+    } else if (action === 'decrement' && target !== 'adults' && this.state[target] > 0) {
       this.setState((prevState) => ({ [target]: prevState[target] - 1 }));
     }
   }
