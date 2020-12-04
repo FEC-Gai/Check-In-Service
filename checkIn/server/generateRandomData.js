@@ -32,9 +32,9 @@ exports.generatePricing = function createRandomPricingData() {
 exports.generateAvailability = function createAvailabilityDates() {
   const newRecords = [];
   for (let i = 1; i < 101; i += 1) {
-    const today = moment();
+    const currentDay = moment('2020-11-01');
     for (let x = 1; x < 366; x += 1) {
-      const newDate = today.add(1, 'days').format('YYYY-MM-DD');
+      const newDate = currentDay.add(1, 'days').format('YYYY-MM-DD');
       const roomId = i;
 
       newRecords.push({
@@ -47,6 +47,8 @@ exports.generateAvailability = function createAvailabilityDates() {
   }
   return newRecords;
 };
+
+console.log(exports.generateAvailability());
 
 // exports.createRandomCheckInData();
 // exports.createAvailabilityDates();

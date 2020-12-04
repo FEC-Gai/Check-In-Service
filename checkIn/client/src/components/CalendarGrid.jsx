@@ -14,7 +14,7 @@ class CalendarGrid extends React.Component {
       currentMonthIndex: 1,
       nextMonthIndex: 2,
       // hardcoding this in temporarily. Need to refactor to make dynamic
-      validMonths: ['August 2020', 'September 2020', 'October 2020', 'November 2020', 'December 2020', 'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021', 'June 2021', 'July 2021'],
+      validMonths: ['November 2020', 'December 2020', 'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021', 'June 2021', 'July 2021', 'August 2021', 'September 2021', 'October 2021'],
     };
 
     this.renderMonth = this.renderMonth.bind(this);
@@ -66,6 +66,7 @@ class CalendarGrid extends React.Component {
       monthGroups[key].lastDay = lastDay;
     });
 
+    console.log(monthGroups);
     return monthGroups;
   }
 
@@ -79,7 +80,7 @@ class CalendarGrid extends React.Component {
     const weeks = [];
 
     let serverDataPointer = 0;
-    for (let i = 0; i < 5; i += 1) {
+    for (let i = 0; i <= 5; i += 1) {
       const days = [];
       for (let x = 0; x < 7; x += 1) {
         let day;
